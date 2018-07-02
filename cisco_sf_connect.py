@@ -16,9 +16,11 @@ class CiscoSfConnect:
         i = self._t.expect([pexpect.TIMEOUT, pexpect.EOF, 'User Name:', '[Pp]assword:', '\(yes\/no\)'])
         if i == 0:
             print("* {} - not available".format(self._ip_device))
+            self.get_status_connect = False
             return False
         elif i == 1:
             print("* {} - You need to clean the ssh key".format(self._ip_device))
+            self.get_status_connect = False
             return False
         if i == 4:
             self._t.sendline("yes")
@@ -31,11 +33,13 @@ class CiscoSfConnect:
         i = self._t.expect(['[Pp]assword', '>', '#', pexpect.exceptions.EOF])
         if i == 3:
             print("Exception")
+            self.get_status_connect = False
             return False
         if i == 0:
             print("Incorrect password!")
             if i == 0:
                 print("I unknown password")
+                self.get_status_connect = False
                 return False
         if i == 1:
             self._t.sendline("enable")
@@ -43,9 +47,11 @@ class CiscoSfConnect:
                 self._t.sendline(self._enable)
                 if self._t.expect(['[Pp]assword', '#']) == 0:
                     print("I do not know ebnale password")
+                    self.get_status_connect = False
                     return False
         self._t.sendline('terminal datadump')
         self._t.expect('#')
+        self.get_status_connect = True
 
     def send_cisco_sf(self, command, show=False):
         out = self._command_send_expect(command)
