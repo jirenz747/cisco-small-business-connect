@@ -1,8 +1,13 @@
-# cisco-small-business-connect
+## cisco-small-business-connect
 connecting cisco sf500, sf300
 
+### You must install the pexpect module  
+```
+pip install pexpect
+```
 
 How use it:  
+
 #import this file is your project  
 from cisco_sf_connect import CiscoSfConnect  
 #Connecting devices [ip, login, password, enable_password=]  
