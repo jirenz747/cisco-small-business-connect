@@ -12,7 +12,7 @@ con = CiscoSfConnect('192.168.1.1', 'cisco', 'cisco')
 #send_cisco_sf - returns a string. By default, nothing shows up on the screen  
 con.send_cisco_sf('show  lldp neighbo', show=True) # This print lldp neighbors  
 
-# Example configuration ntp  
+## Example ntp configuration   
 ```
 from cisco_sf_connect import CiscoSfConnect  
 
