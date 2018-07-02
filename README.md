@@ -17,7 +17,7 @@ from cisco_sf_connect import CiscoSfConnect
 
 con = CiscoSfConnect('192.168.1.1', 'cisco', 'cisco')  
 if con is False:  
-    exit(0)  
+   exit(0)  
 con.send_cisco_sf('conf t')  
 con.send_cisco_sf('sntp server 192.168.10.10')  
 con.send_cisco_sf('write')  
